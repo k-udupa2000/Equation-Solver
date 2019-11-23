@@ -7,7 +7,7 @@ Task_1 :: Task_1(const Task_1& t)
     _c=t._c;
 }
 
-Task_1 :: Task_1(float a,float b,float c)
+Task_1 :: Task_1(double a,double b,double c)
 {
     _a=a;
     _b=b;
@@ -19,11 +19,16 @@ Task_1 :: ~Task_1()
     cout << "Task_1 destructor called" << endl ;
 }
 
-string Task_1 :: calc_Task_1()
+double Task_1 :: calc_Task_1()
 {
-    float x=(_c - _b)/_a;
-    char a='"';
-    string b (1,a);
-    string res=b+"x="+to_string(x)+b;
-    return res;
+    if(_a>0)
+    {
+        double x=(_c - _b)/_a;
+        return x;
+    }
+    else
+    {
+        cout<<"Error: Division by zero";
+        return -1;
+    }
 }
