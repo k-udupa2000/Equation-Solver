@@ -98,7 +98,7 @@ void Task2::get_val_eq1()
     {
         if(e1.substr(xi+1,1).compare("=")!=0)
         {
-            cout << "The given equations do not follow the format: ax+by=c / by+ax=c"<<endl <<"Please try again in the given format";
+            cout << "The given equations do not follow the format: ax+by=c / by+ax=c"<<endl <<"Please try again \n";
             flag=1;
             return;
         }
@@ -258,8 +258,7 @@ void Task2::get_val_eq2()
     {
         if(e2.substr(xi+1 ,1).compare("=")!=0)
         {
-            cout << "2nd eqn";
-            cout << "The given equations do not follow the format: ax+by=c / by+ax=c"<<endl <<"Please try again in the given format";
+            cout << "The given equations do not follow the format: ax+by=c / by+ax=c"<<endl <<"Please try again \n";
             flag=1;
             return;
         }
