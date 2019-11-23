@@ -15,4 +15,4 @@ int main()
 
 //TO DO:
 //Case for x+y and all cases without coefficients
-//check for -ve coeffecints
+//check for -ve coefficients
