@@ -21,7 +21,7 @@ Task_1 :: ~Task_1()
 
 double Task_1 :: calc_Task_1()
 {
-    if(_a>0)
+    if(_a != 0)
     {
         double x=(_c - _b)/_a;
         return x;
