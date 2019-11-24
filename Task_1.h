@@ -7,13 +7,20 @@ using namespace std;
 //equation _ax + _b= _c;
 class Task_1
 {
-    float _a,_b,_c;
+    
+    double _a,_b,_c;
     public:
     Task_1(const Task_1 &t);
-    Task_1(float a,float b,float c);
+    Task_1(double a,double b,double c);
     ~Task_1();
 
-    string calc_Task_1();
+    double calc_Task_1();
+    friend ostream &operator<<(ostream &out, Task_1 &dt)
+    {
+        char a='"';
+        out << a << "x=" << dt.calc_Task_1() << a << "\t";
+        return out;
+    }
 
 };
 /*

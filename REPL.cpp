@@ -1,5 +1,5 @@
 #include "REPL.h"
-
+#include<string>
 REPL::REPL() : _type(0), _input(""), _coefficients() {}
 
 REPL::REPL(std::string input) : _input(input), _type(-1), _coefficients() {}
@@ -124,7 +124,7 @@ void run()
 	while (1)
 	{
 		cout << ">>> ";
-		cin >> inp;
+		getline(cin, inp);
 		if (inp == "exit")
 			break;
 		REPL a(inp);
@@ -132,7 +132,51 @@ void run()
 		cout << ">>> Type: " << a.getType() << endl;
 	}
 }
-
+// Expects string of format ax +/- b or b +/- ax. : Returns <a, b> with correct sign. Includes all cases
+// - -  and - + is taken care off.
+pair<float, float> getLinEqCoeff(string s)
+{
+    int i1 = s.find('x');
+    int i2 = s.find('+');
+    int i;
+    float a, b;
+    vector<int>minus;
+    for(int i = 0; i < s.size(); i++)
+    {
+        if(s[i] == '-')
+        {
+            minus.push_back(i);
+        }
+    }
+    // Set i value to the actual - operator position
+    if(minus.size() == 3) i = minus[1];
+    else if(minus.size() == 1) i = minus[0];
+    else if(minus.size() > 0)
+    {
+        // 2 equations possible ax - b, b - ax;
+        if(minus[0] < i1) i = minus[1];
+        else i = minus[0];
+    }
+    if(i2 != -1) i = i2;
+    if(i < i1)
+    {
+        // equation of the format b +/- ax
+        a = stof(s.substr(i + 1, i1));
+        b = stof(s.substr(0, i));
+        if(i2 == -1)
+        {
+            a = -a;
+        }
+    }
+    else
+    {
+        // equation of the format ax +/- b
+        a = stof(s.substr(0, i1));
+        b = stof(s.substr(i + 1, s.size()));
+        if(i2 == -1) b = -b;
+    }
+    return make_pair(a, b);
+}
 int main()
 {
 	run();
