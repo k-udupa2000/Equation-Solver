@@ -486,7 +486,10 @@ void Task2::solve()
 
 
 ostream &operator <<(ostream &output, Task2 th)
-{
+{    
+    th.get_val_eq1();
+    th.get_val_eq2();
+    th.solve();
     if((isinf(th.get_x()) && isinf(th.get_y())) ||(isnanf(th.get_x()) && isnanf(th.get_y())))
     {
         cout << "No REAL solution for the given equation" << endl;

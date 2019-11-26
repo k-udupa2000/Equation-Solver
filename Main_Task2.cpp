@@ -9,8 +9,6 @@ int main()
     //input.erase(input.length()-1,1);
     //cout << input.substr(0, input.find(";")) << " " <<input.substr(input.find(";")+1);
     Task2 t2 = Task2(input.substr(0, input.find(";")), input.substr(input.find(";")+1));
-    t2.get_val_eq1();
-    t2.get_val_eq2();
-    t2.solve();
+    
     cout << t2;
 }
