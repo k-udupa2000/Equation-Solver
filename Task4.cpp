@@ -1,12 +1,12 @@
 #include<cmath>
 #include <cstdlib>
-#include"task4.h" 
-task4::task4(){}
-task4::task4(string s1):str(s1){};
-double task4::geta(){return a;}
-double task4::getb(){return b;}
-double task4::getc(){return c;}
-void task4::parse(string str)
+#include"Task4.h" 
+Task4::Task4(){}
+Task4::Task4(string s1):str(s1){};
+double Task4::geta(){return a;}
+double Task4::getb(){return b;}
+double Task4::getc(){return c;}
+void Task4::parse(string str)
 {
     int strSize = str.size();
 	int k = 1;
@@ -84,17 +84,17 @@ void task4::parse(string str)
 
 //plus and minus returns solution
 
-/*double task4::plus()
+/*double Task4::plus()
 {
     return ((-b/(2*a))+((sqrt((b*b)-(4*a*c)))/(2*a)));
 }
 
-double task4::minus () 
+double Task4::minus () 
 {
     return ((-b/(2*a))-((sqrt((b*b)-(4*a*c)))/(2*a)));
 }*/
 
-vector<double> task4::solve()
+vector<double> Task4::solve()
 {
 	vector<double> roots;
 	roots.push_back((-b/(2*a))+((sqrt((b*b)-(4*a*c)))/(2*a)));
@@ -105,7 +105,7 @@ vector<double> task4::solve()
 
 //checking whether solution exists or not
 
-int task4::find_d(double a,double b,double c)
+int Task4::find_d(double a,double b,double c)
 {
     double qwe=(b*b)-(4*a*c);   
     if(qwe<0)

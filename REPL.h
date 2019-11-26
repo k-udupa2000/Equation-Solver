@@ -16,7 +16,11 @@
 #include <iterator>
 #include <sstream>
 #include <iostream>
-
+#include"Task1.h"
+#include"Task2.h"
+#include"Task3.h"
+#include"Task7.h"
+// #include"Task9.h"
 using namespace std;
 
 class REPL
@@ -30,6 +34,7 @@ public:
     void detectType();
     int getType() const;
     void setCoeff(vector<pair<string, string>>);
+    void displayAnswer();
     vector<pair<string, string>> getCoeff() const;
 
 private:
