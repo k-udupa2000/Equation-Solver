@@ -1,5 +1,5 @@
 #include "REPL.h"
-#include<string>
+
 REPL::REPL() : _type(0), _input(""), _coefficients() {}
 
 REPL::REPL(std::string input) : _input(input), _type(-1), _coefficients() {}
@@ -130,6 +130,7 @@ void run()
 		REPL a(inp);
 		a.detectType();
 		cout << ">>> Type: " << a.getType() << endl;
+		a.displayAnswer();
 	}
 }
 // Expects string of format ax +/- b or b +/- ax. : Returns <a, b> with correct sign. Includes all cases
@@ -195,6 +196,40 @@ pair<float, float> getLinEqCoeff(string s)
         else a = 1;
     }
     return make_pair(a, b);
+}
+void REPL :: displayAnswer()
+{
+	if(_type == 1)
+	{
+		pair<float, float> p = getLinEqCoeff(_coefficients[0].first);
+		float c = stof(_coefficients[0].second);
+		Task1 t(p.first, p.second, c);
+		cout << t << endl;
+	}
+	else if (_type == 2)
+	{
+		/* code */
+	}
+	else if (_type == 3)
+	{
+		/* code */
+	}
+	else if (_type == 4)
+	{
+		/* code */
+	}
+	else if (_type == 7)
+	{
+			
+	}
+	else if (_type == 9)
+	{
+		/* code */
+	}
+	
+	
+	
+	
 }
 int main()
 {

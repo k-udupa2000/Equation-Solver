@@ -3,11 +3,11 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-class task4 
+class Task4 
 {
 public:
-    task4();
-    task4(string s);
+    Task4();
+    Task4(string s);
     double geta();
     double getb();
     double getc();

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cmath>
-#include "task4.h"
+#include "Task4.h"
 using namespace std;
 
 int main ()
@@ -8,7 +8,7 @@ int main ()
     string s1;
     int check;
     cin>>s1;
-    task4 *set=new task4(s1);
+    Task4 *set=new Task4(s1);
     set->parse(s1);
     check=set->find_d(set->geta(),set->getb(),set->getc());
     if(check==0)
