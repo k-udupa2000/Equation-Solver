@@ -1,25 +1,23 @@
-#include "Task_1.h"
+#include "Task1.h"
 
-Task_1 :: Task_1(const Task_1& t) 
+Task1 :: Task1(const Task1& t) 
 {
     _a=t._a;
     _b=t._b;
     _c=t._c;
 }
 
-Task_1 :: Task_1(double a,double b,double c)
+Task1 :: Task1(double a,double b,double c)
 {
     _a=a;
     _b=b;
     _c=c;
 }
 
-Task_1 :: ~Task_1() 
-{
-    cout << "Task_1 destructor called" << endl ;
-}
+Task1 :: ~Task1() 
+{}
 
-double Task_1 :: calc_Task_1()
+double Task1 :: solve()
 {
     if(_a != 0)
     {

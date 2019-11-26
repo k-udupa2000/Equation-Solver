@@ -1,9 +1,8 @@
+#pragma once
 #include <cmath>
 #include<iostream>
 #include<vector>
 using namespace std;
-#ifndef task4_h
-#define task4_h
 class task4 
 {
 public:
@@ -21,4 +20,3 @@ private:
     double a,b,c;
     string str;
 };
-#endif

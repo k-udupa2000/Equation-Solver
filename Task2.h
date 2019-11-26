@@ -1,5 +1,4 @@
-#ifndef TASK_H
-#define TASK_H
+#pragma once
 #include"Base_Task2.h"
 class Task2 : public Base
 {
@@ -11,4 +10,3 @@ class Task2 : public Base
         void get_val_eq2();
         //void print();
 };
-#endif
