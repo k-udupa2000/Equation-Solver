@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BASE_H
+#define BASE_H
 #include<bits/stdc++.h>
 #include<utility>
 #include<string>
@@ -38,3 +39,4 @@ class Base
         string get_e2();
         void print();
 };
+#endif

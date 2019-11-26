@@ -17,7 +17,7 @@ void Task2::get_val_eq1()
         set_b1(0);
         string c = e1.substr(e1.find("=")+1);
         set_c1(stod(c));
-        if(e1.substr(0,1).compare("-")==-1)
+        if(e1.substr(0,1).compare("-")==0)
         {
             f=1;
             i+=1;    
@@ -47,7 +47,7 @@ void Task2::get_val_eq1()
         set_a1(0);
         string c = e1.substr(e1.find("=")+1);
         set_c1(stod(c));
-        if(e1.substr(0,1).compare("-")==-1)
+        if(e1.substr(0,1).compare("-")==0)
         {
             f=1;
             i+=1;    
@@ -248,7 +248,7 @@ void Task2::get_val_eq2()
         set_b2(0);
         string c = e2.substr(e2.find("=")+1);
         set_c2(stod(c));
-        if(e2.substr(0,1).compare("-")==-1)
+        if(e2.substr(0,1).compare("-")==0)
         {
             f=1;
             i+=1;    
@@ -278,7 +278,7 @@ void Task2::get_val_eq2()
         set_a2(0);
         string c = e2.substr(e2.find("=")+1);
         set_c2(stod(c));
-        if(e2.substr(0,1).compare("-")==-1)
+        if(e2.substr(0,1).compare("-")==0)
         {
             f=1;
             i+=1;    
@@ -331,7 +331,6 @@ void Task2::get_val_eq2()
                 set_a2(stod(a1));
         }
         f=0;
-        //set_opr(e2.substr(xi+1,xi+2));
         //cout << "a2 " <<get_a2();
         i=xi+1;
         if(e2.substr(xi+1, 1).compare("-")==0)
@@ -358,7 +357,7 @@ void Task2::get_val_eq2()
             }
             
         }
-      //  cout << "b2 "<< get_b2();
+        //cerr << "b2 "<< get_b2();
         f=0;
         i=yi+2;
         if(e2.substr(yi+2,1)=="-")
@@ -483,6 +482,14 @@ void Task2::solve()
     }
     
     //cout << "X IS "<<x;
-    
 }
 
+
+ostream &operator <<(ostream &output, Task2 th)
+{
+    if((isinf(th.get_x()) && isinf(th.get_y())) ||(isnanf(th.get_x()) && isnanf(th.get_y())))
+    {
+        cout << "No REAL solution for the given equation" << endl;
+    }
+    cout << "x=" <<setprecision(4) << th.get_x() <<";" <<"y="<<setprecision(4)<<th.get_y()<<endl;
+}
