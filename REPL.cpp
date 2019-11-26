@@ -40,7 +40,6 @@ void REPL::detectType()
 
 		partsOfEquations.push_back(make_pair(temp[0], temp[1]));
 	}
-	REPL::setCoeff(partsOfEquations);
 
 
 
@@ -80,6 +79,7 @@ void REPL::detectType()
 			if (partsOfEquations[0].first.at(partsOfEquations[0].first.length() - 1) == '|')
 			{
 				REPL::_type = 9;
+                partsOfEquations[0].first = partsOfEquations[0].first.substr(1, partsOfEquations[0].first.length()-1);
 				return;
 			}
 		}
@@ -89,6 +89,8 @@ void REPL::detectType()
 			if (partsOfEquations[0].second.at(partsOfEquations[0].second.length() - 1) == '|')
 			{
 				REPL::_type = 9;
+                string temp = partsOfEquations[0].second, temp1 = partsOfEquations[0].first;
+                        partsOfEquations[0] = make_pair(temp, temp1);
 				return;
 			}
 		}
@@ -96,7 +98,16 @@ void REPL::detectType()
 		//  Check for purely linear equation format
 		temp = REPL::isValidOneVariable(partsOfEquations[0], "x");
 		REPL::_type = (temp == 0) ? -1 : (temp == 1) ? 3 : 1;
+        if(_type == 1 || _type == 3)
+        {
+                if(partsOfEquations[0].first.find("x") == string::npos)
+                {
+                        string temp = partsOfEquations[0].second, temp1 = partsOfEquations[0].first;
+                        partsOfEquations[0] = make_pair(temp, temp1);
+                }
+        }
 	}
+	REPL::setCoeff(partsOfEquations);
 }
 
 int REPL::getType() const

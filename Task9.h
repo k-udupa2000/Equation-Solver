@@ -3,11 +3,11 @@
 
 #include <iostream>
 
-class Task9 : public Task1 
+class Task9
 {
         public: 
         Task9();
-        Task9();
+        Task9(double, double, double);
         Task9(const Task9&);
         ~Task9();
 
@@ -16,4 +16,4 @@ class Task9 : public Task1
 
         private:
             double _a, _b, _c, _d, _sol1, _sol2;
-}
+};
