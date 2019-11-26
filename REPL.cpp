@@ -140,6 +140,7 @@ pair<float, float> getLinEqCoeff(string s)
     int i2 = s.find('+');
     int i;
     float a, b;
+    int flag = 0;
     vector<int>minus;
     for(int i = 0; i < s.size(); i++)
     {
@@ -157,23 +158,41 @@ pair<float, float> getLinEqCoeff(string s)
         if(minus[0] < i1) i = minus[1];
         else i = minus[0];
     }
-    if(i2 != -1) i = i2;
-    if(i < i1)
+    if(i2 != -1)
+    {
+        i = i2;
+    } 
+	if(i < i1)
     {
         // equation of the format b +/- ax
-        a = stof(s.substr(i + 1, i1));
+        if(i + 1 == i1)
+        {
+            a = 0;
+        }
+        else a = stof(s.substr(i + 1, i1));
         b = stof(s.substr(0, i));
         if(i2 == -1)
         {
             a = -a;
+            flag = 1;
         }
     }
     else
     {
         // equation of the format ax +/- b
-        a = stof(s.substr(0, i1));
+        if(i1 == 0)
+        {
+            a = 1;
+        }
+        else a = stof(s.substr(0, i1));
+        //cout << i << endl;
         b = stof(s.substr(i + 1, s.size()));
         if(i2 == -1) b = -b;
+    }
+    if(a == 0)
+    {
+        if(flag) a = -1;
+        else a = 1;
     }
     return make_pair(a, b);
 }
