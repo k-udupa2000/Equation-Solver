@@ -11,7 +11,67 @@ void Task2::get_val_eq1()
     int xi = e1.find("x");
     int yi = e1.find("y");
     //cerr << yi << "yi";
-    if(xi<yi)
+    if(yi==-1)
+    {
+        int i=0;
+        set_b1(0);
+        string c = e1.substr(e1.find("=")+1);
+        set_c1(stod(c));
+        if(e1.substr(0,1).compare("-")==-1)
+        {
+            f=1;
+            i+=1;    
+        }
+        if(xi-i==0)
+        {
+            if(f==1)
+                set_a1(-1);
+            else
+                set_a1(1);
+        }
+        else
+        {
+            string a = e1.substr(i,xi-i);
+            if(f==1)
+                set_a1(-1*stod(a));
+            else
+            {
+                set_a1(stod(a));
+            }
+            
+        }
+    }
+    else if(xi==-1)
+    {
+     int i=0;
+        set_a1(0);
+        string c = e1.substr(e1.find("=")+1);
+        set_c1(stod(c));
+        if(e1.substr(0,1).compare("-")==-1)
+        {
+            f=1;
+            i+=1;    
+        }
+        if(yi-i==0)
+        {
+            if(f==1)
+                set_b1(-1);
+            else
+                set_b1(1);
+        }
+        else
+        {
+            string a = e1.substr(i,yi-i);
+            if(f==1)
+                set_b1(-1*stod(a));
+            else
+            {
+                set_b1(stod(a));
+            }
+            
+        }   
+    }
+    else if(xi<yi)
     {
         if(e1.substr(yi+1,1).compare("=")!=0 || xi==-1 || yi==-1)
         {
@@ -98,7 +158,7 @@ void Task2::get_val_eq1()
     {
         if(e1.substr(xi+1,1).compare("=")!=0)
         {
-            cout << "The given equations do not follow the format: ax+by=c / by+ax=c"<<endl <<"Please try again \n";
+            //cout << "The given equations do not follow the format: ax+by=c / by+ax=c"<<endl <<"Please try again \n";
             flag=1;
             return;
         }
@@ -182,7 +242,67 @@ void Task2::get_val_eq2()
     string e2 = get_e2();
     int xi = e2.find("x");
     int yi = e2.find("y");
-    if(xi<yi)
+    if(yi==-1)
+    {
+        int i=0;
+        set_b2(0);
+        string c = e2.substr(e2.find("=")+1);
+        set_c2(stod(c));
+        if(e2.substr(0,1).compare("-")==-1)
+        {
+            f=1;
+            i+=1;    
+        }
+        if(xi-i==0)
+        {
+            if(f==1)
+                set_a2(-1);
+            else
+                set_a2(1);
+        }
+        else
+        {
+            string a = e2.substr(i,xi-i);
+            if(f==1)
+                set_a2(-1*stod(a));
+            else
+            {
+                set_a2(stod(a));
+            }
+            
+        }
+    }
+    else if(xi==-1)
+    {
+     int i=0;
+        set_a2(0);
+        string c = e2.substr(e2.find("=")+1);
+        set_c2(stod(c));
+        if(e2.substr(0,1).compare("-")==-1)
+        {
+            f=1;
+            i+=1;    
+        }
+        if(yi-i==0)
+        {
+            if(f==1)
+                set_b2(-1);
+            else
+                set_b2(1);
+        }
+        else
+        {
+            string a = e2.substr(i,yi-i);
+            if(f==1)
+                set_b2(-1*stod(a));
+            else
+            {
+                set_b2(stod(a));
+            }
+            
+        }   
+    }
+    else if(xi<yi)
     {
         if(e2.substr(yi+1,1).compare("=")!=0 || xi ==-1 || yi==-1)
         {
@@ -212,9 +332,9 @@ void Task2::get_val_eq2()
         }
         f=0;
         //set_opr(e2.substr(xi+1,xi+2));
-       // cout << "a2 " <<get_a2();
+        //cout << "a2 " <<get_a2();
         i=xi+1;
-        if(e2.substr(xi+1, i).compare("-")==0)
+        if(e2.substr(xi+1, 1).compare("-")==0)
         {
             f=1;
             i+=1;
@@ -236,7 +356,9 @@ void Task2::get_val_eq2()
             {
                 set_b2(stod(b1));
             }
+            
         }
+      //  cout << "b2 "<< get_b2();
         f=0;
         i=yi+2;
         if(e2.substr(yi+2,1)=="-")
@@ -253,6 +375,7 @@ void Task2::get_val_eq2()
         {
             set_c2(stod(c1));
         }
+        //cout << "c2 "<< get_c2();
     }
     else
     {
@@ -345,6 +468,7 @@ void Task2::solve()
     }
     else
     {
+        //cout << "Here";
         y = (get_c1()*get_a2()-get_c2()*get_a1())/(get_a2()*get_b1()-get_a1()*get_b2());
     }
     set_y(y);

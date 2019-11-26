@@ -107,6 +107,5 @@ void Base::print()
     {
         cout << "No REAL solution for the given equation" << endl;
     }
-    else
-        cout << "x=" <<setprecision(4) << x_y.first <<";" <<"y="<<setprecision(4)<<x_y.second<<endl;
+    cout << "x=" <<setprecision(4) << x_y.first <<";" <<"y="<<setprecision(4)<<x_y.second<<endl;
 }
