@@ -1,4 +1,7 @@
 #pragma once
+
+#include <iomanip>
+
 #include"Solver.h"
 #include"Base_Task7.h"
 class Task7: public Base_Task7, public Solver

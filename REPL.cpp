@@ -139,21 +139,25 @@ vector<pair<string, string>> REPL::getCoeff() const
 
 //	Just run this function
 //	Currently only gives the type number of the function
-void run()
+void REPL::run()
 {
 	cout << "Welcome to the equation solver" << endl;
 	cout << "Type in an equation and press enter to get the answer" << endl;
+	cout << "Type \"exit\" to exit the REPL" << endl;
 	string inp = "a";
 	while (1)
 	{
 		cout << ">>> ";
 		getline(cin, inp);
 		if (inp == "exit")
+		{
+			cout << "Exit" << endl;
 			break;
+		}
 		inp.erase(remove(inp.begin(), inp.end(), ' '), inp.end());
 		REPL a(inp);
 		a.detectType();
-		cout << ">>> Type: " << a.getType() << endl;
+		// cout << ">>> Type: " << a.getType() << endl;
 		if (a.getType() != -1)
 			cout << ">>> ";
 		a.displayAnswer();
@@ -281,8 +285,4 @@ void REPL ::displayAnswer()
 	{
 		t->print();
 	}
-}
-int main()
-{
-	run();
 }

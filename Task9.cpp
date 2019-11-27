@@ -12,6 +12,7 @@ Task9::~Task9() {}
 
 void Task9::solve() 
 {
+        // if(_a != _c)
         Task1 t1(_a-_c, _b-_d, 0);
         _sol1 = t1.solve();
         Task1 t2(-_a-_c, -_b-_d, 0);
@@ -21,7 +22,7 @@ void Task9::solve()
 ostream& operator<<(ostream& os, Task9& t)
 {
         t.solve();
-        os << "x = " << t._sol1 << ", " << t._sol2 << endl;
+        os << setprecision(4) << "x = " << t._sol1 << ", " << t._sol2 << endl;
         return os;
 }
 void Task9 :: print()

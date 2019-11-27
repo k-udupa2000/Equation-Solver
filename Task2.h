@@ -1,5 +1,7 @@
 #pragma once
 #include"Solver.h"
+#include "iomanip"
+
 #include"Base_Task2.h"
 class Task2 : public Base, public Solver
 {

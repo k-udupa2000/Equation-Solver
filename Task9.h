@@ -2,6 +2,7 @@
 #include "Task1.h"
 #include"Solver.h"
 #include <iostream>
+#include <iomanip>
 
 class Task9 : public Solver
 {

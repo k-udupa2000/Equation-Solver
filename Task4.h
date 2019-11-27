@@ -1,11 +1,14 @@
 #pragma once
+
 #include <cmath>
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <iomanip>
+#include <vector>
 #include <cmath>
 #include <cstdlib>
-#include"Task4.h"
-#include"Solver.h"
+
+#include "Task4.h"
+#include "Solver.h"
 using namespace std;
 class Task4 : public Solver
 {
@@ -15,12 +18,13 @@ public:
     double geta();
     double getb();
     double getc();
-    void parse(string str); 
+    void parse(string str);
     vector<double> solve();
-    int find_d (double, double ,double);
-    friend ostream & operator << (ostream &out,Task4& c);
+    int find_d(double, double, double);
+    friend ostream &operator<<(ostream &out, Task4 &c);
     void print();
+
 private:
-    double a,b,c;
+    double a, b, c;
     string str;
 };

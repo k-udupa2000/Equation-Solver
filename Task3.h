@@ -1,4 +1,5 @@
 #pragma once
+
 #include"Task1.h"
 class Task3 : public Task1
 {

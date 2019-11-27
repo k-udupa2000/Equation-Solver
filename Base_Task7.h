@@ -1,5 +1,5 @@
-#ifndef _Base_Task7_h_
-#define _Base_Task7_h_
+#pragma once
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -21,4 +21,3 @@ public:
 
 
 };
-#endif

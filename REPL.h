@@ -38,6 +38,7 @@ public:
     int getType() const;
     void setCoeff(vector<pair<string, string>>);
     void displayAnswer();
+    void run();
     vector<pair<string, string>> getCoeff() const;
 
 private:
