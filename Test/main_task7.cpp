@@ -1,4 +1,4 @@
-#include"Task7.h"
+    #include"Task7.h"
 vector<string> form3(string input)//C=0
 {
     string A,B,C;
@@ -144,13 +144,13 @@ int main()
 {
     
     
-    string input,A,B,C,D,E,F;
+    string input,input1,A,B,C,D,E,F;
     
-    cin>>input;
-    
-     int a=input.find('=');
-     string a1=input.substr(0,a);
-     string a2=input.substr(a+1,input.size()-a-1);
+    cin>>input1;
+    input=input1.substr(1,input1.size()-2);
+    int a=input.find('=');
+    string a1=input.substr(0,a);
+    string a2=input.substr(a+1,input.size()-a-1);
     vector<string> eq;
     vector<string> coeff;
     eq.push_back(a1);
@@ -194,8 +194,11 @@ int main()
        if(stof(coeff[0])>0 && stof(coeff[3])>0)
        {
             Task_7 t7(stof(coeff[0]),stof(coeff[1]),stof(coeff[2]),stof(coeff[3]),stof(coeff[4]),stof(coeff[5]));
-    
-            cout<<t7.solveexpo();
+            float c=t7.solveexpo();
+            if(c!=numeric_limits<float>::max())
+                cout<<fixed<<setprecision(4)<<t7.solveexpo()<<'\n';
+            else
+                cout<<"No definite solution\n";
        }
        else
        cout<<"Invalid Input\n";
