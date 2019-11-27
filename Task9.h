@@ -17,5 +17,5 @@ class Task9 : public Solver
         friend ostream& operator<<(ostream&, Task9&);
 
         private:
-            float _a, _b, _c, _d, _sol1, _sol2;
+            float _a, _b, _c, _d, _sol1, _sol2, _isvalid;
 };

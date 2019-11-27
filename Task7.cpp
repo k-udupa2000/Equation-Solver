@@ -36,7 +36,7 @@ ostream &operator<<(ostream &output, Task7 obj)
     if (obj.geta() > 0 && obj.getd() > 0)
     {
         if (obj.getsol() != numeric_limits<float>::max())
-            output << setprecision(4) << "x=" << fixed << setprecision(4) << obj.getsol() << '\n';
+            output << setprecision(4) << "x=" << fixed << setprecision(4) << obj.getsol();
         else
             output << "No definite solution";
     }
@@ -49,5 +49,5 @@ ostream &operator<<(ostream &output, Task7 obj)
 
 void Task7 ::print()
 {
-    cout << *this << endl;
+    cout << *this;
 }

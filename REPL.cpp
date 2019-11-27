@@ -287,6 +287,7 @@ void REPL ::displayAnswer()
 	{
 		pair<float, float> p1 = getLinEqCoeff(_coefficients[0].first);
 		pair<float, float> p2 = getLinEqCoeff(_coefficients[0].second);
+		// cout << p1.first << " " <<  p1.second <<  " " << p2.first << " " << p2.second;
 		t = new Task9(p1.first, p1.second, p2.first, p2.second);
 	}
 

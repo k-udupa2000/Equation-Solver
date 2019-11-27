@@ -137,10 +137,10 @@ vector<string> Base_Task7::formc(string input)
     coeff.push_back(C);
     return coeff;
 }
-vector<string> Base_Task7::getcoeff(string input1)
+vector<string> Base_Task7::getcoeff(string input)
 {
-	string input;
-	input=input1.substr(1,input1.size()-2);
+	// string input;
+	// input=input1.substr(1,input1.size()-2);
     int a=input.find('=');
     string a1=input.substr(0,a);
     string a2=input.substr(a+1,input.size()-a-1);
