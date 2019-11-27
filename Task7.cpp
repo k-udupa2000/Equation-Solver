@@ -20,18 +20,33 @@ void Task7::solveexpo()
 			
 	
 }
-void Task7::printsoln()
-{
-    if(a>0 && d>0)
-    {
-            if(sol!=numeric_limits<float>::max())
-                cout<<"x="<<fixed<<setprecision(4)<<sol<<'\n';
-            else
-                cout<<"No definite solution\n";
-    }
-    else 
-    {
-        cout<<"Invalid input\n";
-    }
 
+float Task7::geta()
+{
+    return a;
 }
+float Task7::getd()
+{
+    return d;
+}
+float Task7::getsol()
+{
+    return sol;
+}
+ostream& operator << (ostream& output,Task7  obj){
+    obj.solveexpo();
+    if(obj.geta()>0 && obj.getd()>0)   
+    {
+        if(obj.getsol()!=numeric_limits<float>::max())
+            output<<"x="<<fixed<<setprecision(4)<<obj.getsol()<<'\n';
+        else
+            output<<"No definite solution\n";
+    }
+    else
+    {
+        output<<"Invalid input\n";
+    }
+    return output;
+}
+    
+
