@@ -196,7 +196,7 @@ int main()
             Task_7 t7(stof(coeff[0]),stof(coeff[1]),stof(coeff[2]),stof(coeff[3]),stof(coeff[4]),stof(coeff[5]));
             float c=t7.solveexpo();
             if(c!=numeric_limits<float>::max())
-                cout<<fixed<<setprecision(4)<<t7.solveexpo()<<'\n';
+                cout<<"x="<<fixed<<setprecision(4)<<t7.solveexpo()<<'\n';
             else
                 cout<<"No definite solution\n";
        }
