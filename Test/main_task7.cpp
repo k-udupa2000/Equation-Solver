@@ -1,4 +1,4 @@
-    #include"Task7.h"
+#include"Task7.h"
 vector<string> form3(string input)//C=0
 {
     string A,B,C;
