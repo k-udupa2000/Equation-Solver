@@ -5,7 +5,14 @@ class Task7: public Base_Task7{
 
     Task7(string input);
     void solveexpo();
-    void printsoln();
+    
+    friend ostream& operator <<(ostream& output,Task7 obj);
+    float geta();
+    float getd();
+    float getsol();
+    
+    
+    
 
 
 };
