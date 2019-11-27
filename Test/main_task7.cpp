@@ -8,8 +8,7 @@ int main()
             string input;
             cin>>input;
             Task7 t7(input);
-            t7.solveexpo();
-            t7.printsoln();
+            cout<<t7;
     
     
 
