@@ -87,7 +87,7 @@ vector<string> Base_Task7::formcplusbx(string input1)
     vector<string> coeff;
     string input;
     A=input1.substr(0,input1.find('^'));
-    cout<<A;
+    //cout<<A;
     if(input1[0]=='-')
         input=input1.substr(1,input1.size()-1);
     else
