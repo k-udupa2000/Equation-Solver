@@ -1,10 +1,12 @@
 #pragma once
 #include<iostream>
 #include<string>
+#include"Solver.h"
 using namespace std;
 
+
 //equation _ax + _b= _c;
-class Task1
+class Task1 : public Solver
 {
     
     double _a,_b,_c;
@@ -12,6 +14,7 @@ class Task1
     Task1(const Task1 &t);
     Task1(double a,double b,double c);
     ~Task1();
+    void print();
 
     double solve();
     public :

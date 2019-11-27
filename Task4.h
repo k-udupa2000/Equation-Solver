@@ -2,9 +2,12 @@
 #include <cmath>
 #include<iostream>
 #include<vector>
-
+#include <cmath>
+#include <cstdlib>
+#include"Task4.h"
+#include"Solver.h"
 using namespace std;
-class Task4 
+class Task4 : public Solver
 {
 public:
     Task4();
@@ -16,7 +19,7 @@ public:
     vector<double> solve();
     int find_d (double, double ,double);
     friend ostream & operator << (ostream &out,Task4& c);
-
+    void print();
 private:
     double a,b,c;
     string str;

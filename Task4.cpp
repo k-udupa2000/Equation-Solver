@@ -1,7 +1,4 @@
 #include"Task4.h" 
-#include <cmath>
-#include <cstdlib>
-
 Task4::Task4(){}
 Task4::Task4(string s1):str(s1){};
 double Task4::geta(){return a;}
@@ -122,4 +119,8 @@ ostream & operator << (ostream &out,Task4& set)
         out << "x = " << q[0] << ", " << q[1];		
     }
 	return out;
+}
+void Task4 :: print()
+{
+	cout << *this << endl;
 }

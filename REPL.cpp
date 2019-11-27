@@ -154,7 +154,7 @@ void run()
 		REPL a(inp);
 		a.detectType();
 		cout << ">>> Type: " << a.getType() << endl;
-		if(a.getType() != -1)
+		if (a.getType() != -1)
 			cout << ">>> ";
 		a.displayAnswer();
 	}
@@ -239,44 +239,47 @@ pair<float, float> getLinEqCoeff(string s)
 
 void REPL ::displayAnswer()
 {
+	Solver *t;
 	if (_type == 1)
 	{
 		pair<float, float> p = getLinEqCoeff(_coefficients[0].first);
 		float c = stof(_coefficients[0].second);
-		Task1 t(p.first, p.second, c);
-		cout << t << endl;
+		t = new Task1(p.first, p.second, c);
 	}
 	else if (_type == 2)
 	{
 		vector<string> equations;
 		REPL::split(REPL::_input, ';', equations);
+		t = new Task2(equations[0], equations[1]);
 	}
 	else if (_type == 3)
 	{
 		pair<float, float> p1 = getLinEqCoeff(_coefficients[0].first);
 		pair<float, float> p2 = getLinEqCoeff(_coefficients[0].second);
-		Task3 t(p1.first, p1.second, p2.first, p2.second);
-		cout << t << endl;
+		t = new Task3(p1.first, p1.second, p2.first, p2.second);
 	}
 	else if (_type == 4)
 	{
-		Task4 t = Task4(_coefficients[0].first);
-
-		cout << t << endl;
+		t = new Task4(_coefficients[0].first);
 	}
 	else if (_type == 7)
 	{
-		//cout << _coefficients[0].first + _coefficients[0].second << endl;
-		Task7 t(_input);
-		cout << t;
+		t = new Task7(_input);
 	}
 	else if (_type == 9)
 	{
 		pair<float, float> p1 = getLinEqCoeff(_coefficients[0].first);
 		pair<float, float> p2 = getLinEqCoeff(_coefficients[0].second);
-		Task9 t(p1.first, p1.second, p2.first, p2.second);
+		t = new Task9(p1.first, p1.second, p2.first, p2.second);
+	}
 
-		cout << t << endl;
+	if (_type == -1)
+	{
+		cout << "Equation type not found" << endl;
+	}
+	else
+	{
+		t->print();
 	}
 }
 int main()

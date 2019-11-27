@@ -1,9 +1,9 @@
 #pragma once
 #include "Task1.h"
-
+#include"Solver.h"
 #include <iostream>
 
-class Task9
+class Task9 : public Solver
 {
         public: 
         Task9();
@@ -12,6 +12,7 @@ class Task9
         ~Task9();
 
         void solve();
+        void print();
         friend ostream& operator<<(ostream&, Task9&);
 
         private:

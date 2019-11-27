@@ -30,3 +30,7 @@ double Task1 :: solve()
         return -1;
     }
 }
+void Task1 :: print()
+{
+    cout << *this << endl;
+}

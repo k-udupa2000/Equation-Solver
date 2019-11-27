@@ -21,6 +21,10 @@ void Task9::solve()
 ostream& operator<<(ostream& os, Task9& t)
 {
         t.solve();
-        os << "x = " << t._sol1 << ", " << t._sol2;
+        os << "x = " << t._sol1 << ", " << t._sol2 << endl;
         return os;
+}
+void Task9 :: print()
+{
+        cout << *this;
 }
