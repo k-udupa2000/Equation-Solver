@@ -148,6 +148,7 @@ void run()
 // - -  and - + is taken care off.
 pair<float, float> getLinEqCoeff(string s)
 {
+	s.erase(remove(s.begin(), s.end(), ' '), s.end());
     int i1 = s.find('x');
     int i2 = s.find('+');
     int i;
@@ -219,19 +220,27 @@ void REPL :: displayAnswer()
 	}
 	else if (_type == 2)
 	{
-		/* code */
+		vector<string> equations;
+		REPL::split(REPL::_input, ';', equations);
 	}
 	else if (_type == 3)
 	{
-		/* code */
+		pair<float, float> p1 = getLinEqCoeff(_coefficients[0].first);
+		pair<float, float> p2 = getLinEqCoeff(_coefficients[0].second);
+		Task3 t(p1.first, p1.second, p2.first, p2.second);
+		cout << t << endl;
 	}
 	else if (_type == 4)
 	{
 		/* code */
+		Task7 t(_input);
+		cout << t;
 	}
 	else if (_type == 7)
 	{
-			
+		//cout << _coefficients[0].first + _coefficients[0].second << endl;
+		Task7 t(_input);
+		cout << t;
 	}
 	else if (_type == 9)
 	{

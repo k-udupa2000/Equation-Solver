@@ -19,6 +19,8 @@ class Task1
     friend ostream &operator<<(ostream &out, Task1 &dt)
     {
         char a='"';
+        float x = dt.solve();
+        if(x != 0)
         out << a << "x=" << dt.solve() << a << "\t";
         return out;
     }

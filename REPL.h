@@ -20,7 +20,7 @@
 #include"Task2.h"
 #include"Task3.h"
 #include"Task7.h"
-// #include"Task9.h"
+#include"Task9.h"
 using namespace std;
 
 class REPL
