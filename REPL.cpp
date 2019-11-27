@@ -177,12 +177,25 @@ pair<float, float> getLinEqCoeff(string s)
 	{
 		return make_pair(0, stof(s));
 	}
-
 	for (int i = 0; i < s.size(); i++)
 	{
 		if (s[i] == '-')
 		{
 			minus.push_back(i);
+		}
+	}
+	if(s.find('+') == string :: npos)
+	{
+		if(s.find('-') == string :: npos)
+		{
+			return make_pair(stof(s.substr(0, i1)), 0);
+		}
+		else if(minus.size() == 1)
+		{
+			if(minus[0] < i1)
+			{
+				return make_pair(stof(s.substr(0, i1)), 0);
+			}
 		}
 	}
 	// Set i value to the actual - operator position
