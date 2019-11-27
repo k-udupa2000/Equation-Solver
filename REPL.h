@@ -16,11 +16,14 @@
 #include <iterator>
 #include <sstream>
 #include <iostream>
+
 #include"Task1.h"
 #include"Task2.h"
 #include"Task3.h"
+#include"Task4.h"
 #include"Task7.h"
 #include"Task9.h"
+
 using namespace std;
 
 class REPL

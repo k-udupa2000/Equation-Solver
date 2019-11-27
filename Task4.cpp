@@ -1,6 +1,7 @@
-#include<cmath>
-#include <cstdlib>
 #include"Task4.h" 
+#include <cmath>
+#include <cstdlib>
+
 Task4::Task4(){}
 Task4::Task4(string s1):str(s1){};
 double Task4::geta(){return a;}
@@ -82,18 +83,6 @@ void Task4::parse(string str)
    
 }
 
-//plus and minus returns solution
-
-/*double Task4::plus()
-{
-    return ((-b/(2*a))+((sqrt((b*b)-(4*a*c)))/(2*a)));
-}
-
-double Task4::minus () 
-{
-    return ((-b/(2*a))-((sqrt((b*b)-(4*a*c)))/(2*a)));
-}*/
-
 vector<double> Task4::solve()
 {
 	vector<double> roots;
@@ -113,4 +102,24 @@ int Task4::find_d(double a,double b,double c)
         return 0;
     }
     return 1;
+}
+
+ostream & operator << (ostream &out,Task4& set)
+{
+	set.parse(set.str);
+	int check=set.find_d(set.geta(),set.getb(),set.getc());
+	if(check==0)
+	{
+		out << "No solution" << endl;
+	}
+	else
+    {
+        vector<double> q=set.solve();
+		if(q[0]==0 && q[1]==-0)
+		{
+			q[0]=0;q[1]=0;
+		}
+        out << "x = " << q[0] << ", " << q[1];		
+    }
+	return out;
 }

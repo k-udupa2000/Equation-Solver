@@ -5,7 +5,7 @@ REPL::REPL() : _type(0), _input(""), _coefficients() {}
 REPL::REPL(std::string input) : _input(input), _type(-1), _coefficients() {}
 
 REPL::REPL(const REPL &r)
-		: _type(r.REPL::_type), _coefficients(r._coefficients), _input(r._input) {}
+	: _type(r.REPL::_type), _coefficients(r._coefficients), _input(r._input) {}
 
 REPL::~REPL() {}
 
@@ -41,8 +41,6 @@ void REPL::detectType()
 		partsOfEquations.push_back(make_pair(temp[0], temp[1]));
 	}
 
-
-
 	//  If there are two equations
 	if (equations.size() == 2)
 	{
@@ -65,12 +63,23 @@ void REPL::detectType()
 		if (partsOfEquations[0].first.find("y") != string::npos || partsOfEquations[0].second.find("y") != string::npos)
 			return;
 
-		
 		//  First check if there are any exponents
 		int temp = REPL::isValidOneVariable(partsOfEquations[0], "^");
 		REPL::_type = (temp == 0) ? -1 : (temp == 1) ? 7 : 4;
-		if (REPL::_type != -1)
+		if (REPL::_type == 4)
+		{
+			REPL::setCoeff(partsOfEquations);
+			int x = equations[0].find('x');
+			int expo = equations[0].find('^');
+			if (x > expo)
+				REPL::_type = 7;
 			return;
+		}
+		else if (REPL::_type == 7)
+		{
+			REPL::setCoeff(partsOfEquations);
+			return;
+		}
 
 		// Check if the equation contains a mod sign
 		//  Check for |ax+b|=cx+d
@@ -79,18 +88,21 @@ void REPL::detectType()
 			if (partsOfEquations[0].first.at(partsOfEquations[0].first.length() - 1) == '|')
 			{
 				REPL::_type = 9;
-                partsOfEquations[0].first = partsOfEquations[0].first.substr(1, partsOfEquations[0].first.length()-1);
+				partsOfEquations[0].first = partsOfEquations[0].first.substr(1, partsOfEquations[0].first.length() - 2);
+				REPL::setCoeff(partsOfEquations);
 				return;
 			}
 		}
+
 		//  Check for ax+b=|cx+d|
 		else if (equations[0].at(equations[0].length() - 1) == '|')
 		{
-			if (partsOfEquations[0].second.at(partsOfEquations[0].second.length() - 1) == '|')
+			if (partsOfEquations[0].second.at(0) == '|')
 			{
 				REPL::_type = 9;
-                string temp = partsOfEquations[0].second, temp1 = partsOfEquations[0].first;
-                        partsOfEquations[0] = make_pair(temp, temp1);
+				string temp = partsOfEquations[0].second.substr(1, partsOfEquations[0].second.length() - 2), temp1 = partsOfEquations[0].first;
+				partsOfEquations[0] = make_pair(temp, temp1);
+				REPL::setCoeff(partsOfEquations);
 				return;
 			}
 		}
@@ -98,14 +110,14 @@ void REPL::detectType()
 		//  Check for purely linear equation format
 		temp = REPL::isValidOneVariable(partsOfEquations[0], "x");
 		REPL::_type = (temp == 0) ? -1 : (temp == 1) ? 3 : 1;
-        if(_type == 1 || _type == 3)
-        {
-                if(partsOfEquations[0].first.find("x") == string::npos)
-                {
-                        string temp = partsOfEquations[0].second, temp1 = partsOfEquations[0].first;
-                        partsOfEquations[0] = make_pair(temp, temp1);
-                }
-        }
+		if (_type == 1 || _type == 3)
+		{
+			if (partsOfEquations[0].first.find("x") == string::npos)
+			{
+				string temp = partsOfEquations[0].second, temp1 = partsOfEquations[0].first;
+				partsOfEquations[0] = make_pair(temp, temp1);
+			}
+		}
 	}
 	REPL::setCoeff(partsOfEquations);
 }
@@ -138,9 +150,12 @@ void run()
 		getline(cin, inp);
 		if (inp == "exit")
 			break;
+		inp.erase(remove(inp.begin(), inp.end(), ' '), inp.end());
 		REPL a(inp);
 		a.detectType();
 		cout << ">>> Type: " << a.getType() << endl;
+		if(a.getType() != -1)
+			cout << ">>> ";
 		a.displayAnswer();
 	}
 }
@@ -148,70 +163,83 @@ void run()
 // - -  and - + is taken care off.
 pair<float, float> getLinEqCoeff(string s)
 {
-	s.erase(remove(s.begin(), s.end(), ' '), s.end());
-    int i1 = s.find('x');
-    int i2 = s.find('+');
-    int i;
-    float a, b;
-    int flag = 0;
-    vector<int>minus;
-    for(int i = 0; i < s.size(); i++)
-    {
-        if(s[i] == '-')
-        {
-            minus.push_back(i);
-        }
-    }
-    // Set i value to the actual - operator position
-    if(minus.size() == 3) i = minus[1];
-    else if(minus.size() == 1) i = minus[0];
-    else if(minus.size() > 0)
-    {
-        // 2 equations possible ax - b, b - ax;
-        if(minus[0] < i1) i = minus[1];
-        else i = minus[0];
-    }
-    if(i2 != -1)
-    {
-        i = i2;
-    } 
-	if(i < i1)
-    {
-        // equation of the format b +/- ax
-        if(i + 1 == i1)
-        {
-            a = 0;
-        }
-        else a = stof(s.substr(i + 1, i1));
-        b = stof(s.substr(0, i));
-        if(i2 == -1)
-        {
-            a = -a;
-            flag = 1;
-        }
-    }
-    else
-    {
-        // equation of the format ax +/- b
-        if(i1 == 0)
-        {
-            a = 1;
-        }
-        else a = stof(s.substr(0, i1));
-        //cout << i << endl;
-        b = stof(s.substr(i + 1, s.size()));
-        if(i2 == -1) b = -b;
-    }
-    if(a == 0)
-    {
-        if(flag) a = -1;
-        else a = 1;
-    }
-    return make_pair(a, b);
+	int i1 = s.find('x');
+	int i2 = s.find('+');
+	int i;
+	float a, b;
+	int flag = 0;
+	vector<int> minus;
+	if (s.find('x') == string ::npos)
+	{
+		return make_pair(0, stof(s));
+	}
+
+	for (int i = 0; i < s.size(); i++)
+	{
+		if (s[i] == '-')
+		{
+			minus.push_back(i);
+		}
+	}
+	// Set i value to the actual - operator position
+	if (minus.size() == 3)
+		i = minus[1];
+	else if (minus.size() == 1)
+		i = minus[0];
+	else if (minus.size() > 0)
+	{
+		// 2 equations possible ax - b, b - ax;
+		if (minus[0] < i1)
+			i = minus[1];
+		else
+			i = minus[0];
+	}
+	if (i2 != -1)
+	{
+		i = i2;
+	}
+	if (i < i1)
+	{
+		// equation of the format b +/- ax
+		if (i + 1 == i1)
+		{
+			a = 0;
+		}
+		else
+			a = stof(s.substr(i + 1, i1));
+		b = stof(s.substr(0, i));
+		if (i2 == -1)
+		{
+			a = -a;
+			flag = 1;
+		}
+	}
+	else
+	{
+		// equation of the format ax +/- b
+		if (i1 == 0)
+		{
+			a = 1;
+		}
+		else
+			a = stof(s.substr(0, i1));
+		b = stof(s.substr(i + 1, s.size()));
+		if (i2 == -1)
+			b = -b;
+	}
+	if (a == 0)
+	{
+		if (flag)
+			a = -1;
+		else
+			a = 1;
+	}
+	return make_pair(a, b);
 }
-void REPL :: displayAnswer()
+
+void REPL ::displayAnswer()
 {
-	if(_type == 1)
+	if (_type == 1)
 	{
 		pair<float, float> p = getLinEqCoeff(_coefficients[0].first);
 		float c = stof(_coefficients[0].second);
@@ -232,9 +260,9 @@ void REPL :: displayAnswer()
 	}
 	else if (_type == 4)
 	{
-		/* code */
-		Task7 t(_input);
-		cout << t;
+		Task4 t = Task4(_coefficients[0].first);
+
+		cout << t << endl;
 	}
 	else if (_type == 7)
 	{
@@ -244,12 +272,12 @@ void REPL :: displayAnswer()
 	}
 	else if (_type == 9)
 	{
-		/* code */
+		pair<float, float> p1 = getLinEqCoeff(_coefficients[0].first);
+		pair<float, float> p2 = getLinEqCoeff(_coefficients[0].second);
+		Task9 t(p1.first, p1.second, p2.first, p2.second);
+
+		cout << t << endl;
 	}
-	
-	
-	
-	
 }
 int main()
 {
