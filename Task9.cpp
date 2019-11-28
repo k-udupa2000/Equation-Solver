@@ -32,13 +32,24 @@ void Task9::solve()
         }
 }
 
+bool Task9::isValidSolution()
+{
+        if(fabs(_a*_sol2 + _b) == (_c*_sol2 + _d))
+                return true;
+        else
+                return false;
+}
+
 ostream &operator<<(ostream &os, Task9 &t)
 {
         t.solve();
         if (t._isvalid)
-                os << setprecision(4) << "x = " << t._sol1 << ", " << t._sol2 << endl;
-        else
+                os << fixed << setprecision(4) << "x = " << t._sol1 << ", " << t._sol2 << endl;
+        else if(t.isValidSolution())
                 os << setprecision(4) << "x = " << t._sol2 << endl;
+        else
+                os << "No valid solution for the given equation! " << endl;
+                
         return os;
 }
 void Task9 ::print()

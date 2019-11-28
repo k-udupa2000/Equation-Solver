@@ -1,6 +1,7 @@
 #pragma once
 #include "Task1.h"
 #include"Solver.h"
+#include <cmath>
 #include <iostream>
 #include <iomanip>
 
@@ -13,6 +14,7 @@ class Task9 : public Solver
         ~Task9();
 
         void solve();
+        bool isValidSolution();
         void print();
         friend ostream& operator<<(ostream&, Task9&);
 
