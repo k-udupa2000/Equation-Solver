@@ -38,11 +38,11 @@ ostream &operator<<(ostream &output, Task7 obj)
         if (obj.getsol() != numeric_limits<float>::max())
             output << setprecision(4) << "x=" << fixed << setprecision(4) << obj.getsol();
         else
-            output << "No definite solution";
+            output << "No definite solution" << endl;
     }
     else
     {
-        output << "Invalid input";
+        output << "Invalid input" << endl;
     }
     return output;
 }

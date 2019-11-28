@@ -1,0 +1,7 @@
+These are the people in the group:
+IMT2018523 -> Shubhayu      : Task 9 (REPL)
+IMT2018510 -> Karthik Udupa : Task 3 (also wrote getLinEqCoeff, Solver base class)
+IMT2018518 -> Ritik Gupta   : Task 2
+IMT2018505 -> Avik          : Task 1 
+IMT2018042 -> Kashif        : Task 7
+IMT2018083 -> Gopal         : Task 4

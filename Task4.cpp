@@ -1,6 +1,6 @@
 #include "Task4.h"
 Task4::Task4() {}
-Task4::Task4(string s1) : str(s1){};
+Task4::Task4(string s1) : str(s1), c(0){};
 double Task4::geta() { return a; }
 double Task4::getb() { return b; }
 double Task4::getc() { return c; }

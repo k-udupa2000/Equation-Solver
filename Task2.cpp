@@ -491,11 +491,14 @@ ostream &operator<<(ostream &output, Task2 th)
     th.solve();
     if ((isinf(th.get_x()) && isinf(th.get_y())) || (isnanf(th.get_x()) && isnanf(th.get_y())))
     {
-        cout << "No REAL solution for the given equation" << endl;
+        output << "No REAL solution for the given equation" << endl;
     }
-    cout << "x=" << setprecision(4) << th.get_x() << ";"
-         << "y=" << setprecision(4) << th.get_y() << endl;
+    output << "x=" << setprecision(4) << th.get_x() << ";"
+           << "y=" << setprecision(4) << th.get_y() << endl;
+
+    return output;
 }
+
 void Task2 ::print()
 {
     cout << *this;

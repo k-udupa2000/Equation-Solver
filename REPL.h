@@ -16,6 +16,7 @@
 #include <iterator>
 #include <sstream>
 #include <iostream>
+#include <stdexcept>
 
 #include"Task1.h"
 #include"Task2.h"

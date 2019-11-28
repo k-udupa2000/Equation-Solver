@@ -9,7 +9,8 @@ using namespace std;
 class Task1 : public Solver
 {
 
-    double _a, _b, _c;
+    double _a, _b, _c, x;
+    public : int flag;
 
 public:
     Task1(const Task1 &t);
@@ -24,9 +25,11 @@ public:
     friend ostream &operator<<(ostream &out, Task1 &dt)
     {
         char a = '"';
-        float x = dt.solve();
-        if (x != 0)
-            out << setprecision(4) << a << "x=" << dt.solve() << a << "\t";
+        dt.solve();
+        if (dt.flag != 0)
+            out << setprecision(4) << a << "x=" << fixed << dt.x << a << "\t";
+        else 
+            out << "No solution!";
         return out;
     }
 };
