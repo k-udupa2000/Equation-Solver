@@ -62,4 +62,7 @@ ostream& operator << (ostream& output,Task7  obj){
     return output;
 }
     
-
+void Task7::print()
+{
+    cout << *this;
+}
