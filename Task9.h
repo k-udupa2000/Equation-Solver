@@ -14,7 +14,7 @@ class Task9 : public Solver
         ~Task9();
 
         void solve();
-        bool isValidSolution();
+        bool isValidSolution(double);
         void print();
         friend ostream& operator<<(ostream&, Task9&);
 
