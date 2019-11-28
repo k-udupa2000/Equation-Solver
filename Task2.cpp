@@ -499,3 +499,7 @@ ostream &operator <<(ostream &output, Task2 th)
     else
         cout << "x=" <<setprecision(4) << th.get_x() <<";" <<"y="<<setprecision(4)<<th.get_y()<<endl;
 }
+void Task2 :: print()
+{
+    cout << *this;
+}
