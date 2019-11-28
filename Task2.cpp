@@ -497,7 +497,7 @@ ostream &operator <<(ostream &output, Task2 th)
         cout << "No REAL solution for the given equation" << endl;
     }
     else
-        cout << "x=" <<setprecision(4) << th.get_x() <<";" <<"y="<<setprecision(4)<<th.get_y()<<endl;
+        cout << "x="<<fixed <<setprecision(4) << th.get_x() <<";" <<"y="<<fixed<<setprecision(4)<<th.get_y()<<endl;
 }
 void Task2 :: print()
 {
